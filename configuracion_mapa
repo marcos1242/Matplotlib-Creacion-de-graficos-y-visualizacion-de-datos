@@ -1,0 +1,8 @@
+#Ruta de los archivos
+
+facultades_path = 'C:/Users/yo/Downloads/PA/facultades.xlsx'
+shapefile_path = 'C:/Users/yo/Downloads/PA/perimetro.zip'
+
+#Parametros para la visualizacion
+Figure_size = (10, 10)
+Markersize = 50
