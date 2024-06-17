@@ -1,0 +1,28 @@
+# Funciones para crear y mostrar el gráfico
+
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+
+from config import FIGURE_SIZE, MARKERSIZE
+
+def assign_colors(gdf_publicas):
+    categories = gdf_publicas['universida'].unique()
+    colors = plt.cm.get_cmap('hsv', len(categories))
+    color_mapping = {category: colors(i) for i, category in enumerate(categories)}
+    gdf_publicas['color'] = gdf_publicas['universida'].map(color_mapping)
+    return gdf_publicas, color_mapping
+
+def plot_map(mapa_CABA, gdf_publicas, color_mapping):
+    fig, ax = plt.subplots(figsize=FIGURE_SIZE)
+    mapa_CABA.plot(ax=ax, color='lightblue', edgecolor='black')
+
+    for categoria in color_mapping.keys():
+        subset = gdf_publicas[gdf_publicas['universida'] == categoria]
+        subset.plot(ax=ax, color=[color_mapping[categoria]], markersize=MARKERSIZE, label=categoria)
+
+    ax.legend(title="Facultades", loc='upper left', bbox_to_anchor=(1, 1))
+    plt.title('Ubicación de Facultades Públicas en la Provincia de Buenos Aires')
+    plt.xlabel('Longitud')
+    plt.ylabel('Latitud')
+    plt.grid(True)
+    plt.show()
