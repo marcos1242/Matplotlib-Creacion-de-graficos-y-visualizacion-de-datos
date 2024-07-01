@@ -1,0 +1,27 @@
+from Graficos import Graficos
+import pandas as pd
+import matplotlib.pyplot as plt
+
+class Grafico_lineas(Graficos):
+    def filtrar_datos(self):
+        self.datos['FechaSalida'] = pd.to_datetime(self.datos['FechaSalida']) #Convierte la columna a formato de fecha y hora
+        self.datos['Año'] = self.datos['FechaSalida'].dt.year #Extrae el año de la columna fecha salida y lo guarda en una nueva columna llamada año
+        return self.datos
+
+    def calcular_resultados(self):
+        return self.datos_filtrados.groupby('Año')['GastoTotal'].mean().reset_index() #Agrupa los datos filtrados en la columna año y calcula el gasto total promedio por año
+
+    def graficar(self, color_linea, color_puntos): 
+        fig, ax = plt.subplots(figsize=(10, 6)) #crea la figura y el eje para el grafico con el tamaño especificado en pulgadas 
+        ax.plot(self.resultados['Año'], self.resultados['GastoTotal'],
+                marker='o', color=color_linea, linestyle='-', linewidth=2, label='Línea') #Dibuja la linea del grafico con los datos calculados
+
+        ax.scatter(self.resultados['Año'], self.resultados['GastoTotal'],
+                   color=color_puntos, label='Puntos', s=100) #añade puntos con un color especifico
+
+        ax.set_xlabel('Año')
+        ax.set_ylabel('Gasto Total Promedio')
+        ax.set_title('Promedio de Gasto Total por Año ({}-{})'.format(self.datos['Año'].min(), self.datos['Año'].max()))
+        ax.grid(True)
+        ax.legend()
+        plt.show()
