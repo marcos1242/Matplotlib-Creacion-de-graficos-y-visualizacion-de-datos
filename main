@@ -1,0 +1,29 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+from Lineas import Grafico_lineas
+from boxplot import Boxplot
+from barras import Grafico_barras
+from puntos import Grafico_dispersion
+
+# URL del archivo CSV
+csv_url = 'https://catalogodatos.gub.uy/dataset/1c1d75d0-b3c9-4ea4-a519-8c6b1468e589/resource/922f23e1-296c-490a-a3df-61e03e122d17/download/emisivo.csv'
+
+# Crear una instancia de cada clase
+grafico_gasto_anual = Grafico_lineas(csv_url)
+aerolineas = Boxplot(csv_url)
+grafico_gasto_destino = Grafico_barras(csv_url)
+grafico_gasto_estudio = Grafico_dispersion(csv_url)
+
+# Configurar el tema (por ejemplo, 'ggplot')
+grafico_gasto_anual.configurar_tema('ggplot')
+aerolineas.configurar_tema('ggplot')
+grafico_gasto_destino.configurar_tema('ggplot')
+grafico_gasto_estudio.configurar_tema('ggplot')
+
+# Graficar
+grafico_gasto_anual.graficar(color_linea='green', color_puntos='orange')
+aerolineas.graficar()
+grafico_gasto_destino.graficar()
+grafico_gasto_estudio.graficar()
