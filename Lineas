@@ -20,8 +20,9 @@ class Grafico_lineas(Graficos):
                    color=color_puntos, label='Puntos', s=100) #añade puntos con un color especifico
 
         ax.set_xlabel('Año')
-        ax.set_ylabel('Gasto Total Promedio')
+        ax.set_ylabel('Gasto Promedio')
         ax.set_title('Promedio de Gasto Total por Año ({}-{})'.format(self.datos['Año'].min(), self.datos['Año'].max()))
         ax.grid(True)
         ax.legend()
         plt.show()
+
