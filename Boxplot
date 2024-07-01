@@ -1,0 +1,24 @@
+from Graficos import Graficos
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+
+class Boxplot(Graficos):
+    alojamientos_permitidos = ["Hotel", "Vivienda Propia", "Hostel", "Appart Hotel"]
+
+    def filtrar_datos(self):
+        return self.datos[self.datos['Alojamiento'].isin(self.alojamientos_permitidos) & 
+                          (self.datos['GastoAlojamiento'] >= 1) & 
+                          (self.datos['GastoTotal'] <= 1000)]
+
+    def calcular_resultados(self):
+        return self.datos_filtrados
+
+    def graficar(self):
+        self.resultados.boxplot(column='GastoAlojamiento', by='Alojamiento')
+        plt.title('Comparación de Gastos de Alojamiento entre 1 y 1000 según el Tipo de Alojamiento seleccionado')
+        plt.suptitle('')  # Para eliminar el título adicional generado por el método boxplot
+        plt.xlabel('Tipo de Alojamiento')
+        plt.ylabel('Gasto de Alojamiento')
+        plt.show()
