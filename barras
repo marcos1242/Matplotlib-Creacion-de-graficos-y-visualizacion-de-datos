@@ -23,5 +23,6 @@ class Grafico_barras(Graficos):
         ax.legend(bars, self.resultados['Destino'], title='Destinos', title_fontsize='large')
         ax.set_xlabel('Destinos')
         ax.set_ylabel('Gasto Total Promedio')
-        ax.set_title('Gasto total promedio por Destino')
+        plt.yticks(range(0, 7000, 1000))
+        ax.set_title('Gasto promedio por Destino')
         plt.show()
