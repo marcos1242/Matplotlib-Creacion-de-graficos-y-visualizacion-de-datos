@@ -2,17 +2,18 @@ from Graficos import Graficos
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
-
 class Grafico_dispersion(Graficos):
     def filtrar_datos(self):
         datos_filtrados = self.datos.dropna(subset=['Estudio'])
         return datos_filtrados[~datos_filtrados['Estudio'].isin(['Otros', 'Sin Datos'])]
 
     def calcular_resultados(self):
+        self.datos_filtrados = self.filtrar_datos()
         return self.datos_filtrados.groupby('Estudio')['GastoTotal'].mean().reset_index()
 
     def graficar(self, colores=None):
+        self.resultados = self.calcular_resultados()
+        
         if colores is None:
             colores = plt.get_cmap('hsv', len(self.resultados))
 
