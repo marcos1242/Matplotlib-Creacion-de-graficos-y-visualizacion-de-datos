@@ -1,0 +1,23 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+class Graficos(): #Definimos una clase generica para nuestros graficos
+    def __init__(self, csv_url): #Definimos el constructor
+        self.csv_url = csv_url #Almacena la url del archivo en la variable instancia
+        self.datos = pd.read_csv(self.csv_url) #carga los datos del archivo en un DataFrame de pandas
+        self.datos_filtrados = self.filtrar_datos() #Filtra los datos utilizando un metodo que se debe implementar en las subclases
+        self.resultados = self.calcular_resultados() #Calculo de los resultados con un metodo implementado en las subclases
+
+#Metodos que deben ser usados en las subclases
+    def filtrar_datos(self): 
+        raise NotImplementedError("Debes implementar el método filtrar_datos")
+
+    def calcular_resultados(self):
+        raise NotImplementedError("Debes implementar el método calcular_resultados") #Error que indica que el metodo se debe usar en la subclase
+
+    def configurar_tema(self, tema='default'): #configuramos el tema de los graficos
+        #utilizamos el tema indicado en estecaso por default
+        plt.style.use(tema)
+
+    def graficar(self, **kwargs):
+        raise NotImplementedError("Debes implementar el método graficar")
