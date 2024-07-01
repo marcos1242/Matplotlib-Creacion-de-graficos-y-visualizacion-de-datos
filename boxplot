@@ -2,8 +2,6 @@ from Graficos import Graficos
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
-
 class Boxplot(Graficos):
     alojamientos_permitidos = ["Hotel", "Vivienda Propia", "Hostel", "Appart Hotel"]
 
@@ -17,8 +15,10 @@ class Boxplot(Graficos):
 
     def graficar(self):
         self.resultados.boxplot(column='GastoAlojamiento', by='Alojamiento')
-        plt.title('Comparación de Gastos de Alojamiento entre 1 y 1000 según el Tipo de Alojamiento seleccionado')
+        plt.title('Comparación de Gastos de Alojamiento según el Tipo de Alojamiento seleccionado')
         plt.suptitle('')  # Para eliminar el título adicional generado por el método boxplot
         plt.xlabel('Tipo de Alojamiento')
         plt.ylabel('Gasto de Alojamiento')
+        plt.yticks(range(0, 1300, 200))
         plt.show()
+
