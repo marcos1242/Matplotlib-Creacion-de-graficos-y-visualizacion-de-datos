@@ -1,0 +1,27 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from Graficos import Graficos
+
+class Grafico_barras(Graficos):
+    def filtrar_datos(self):
+        datos_filtrados = self.datos.dropna(subset=['Destino'])
+        return datos_filtrados[~datos_filtrados['Destino'].isin(['Otros', 'Sin Datos', 'Centro y Norte America', 'Asia del Este y Pacifico'])]
+
+    def calcular_resultados(self):
+        return self.datos_filtrados.groupby('Destino')['GastoTotal'].mean().reset_index()
+
+    def graficar(self, colores=None):
+        if colores is None:
+            colores = ['blue', 'red', 'green', 'orange', 'purple', 'brown', 'pink', 'yellow', 'teal']
+
+        self.resultados = self.resultados.sort_values(by='GastoTotal')
+
+        fig, ax = plt.subplots(figsize=(15, 12))
+        bars = ax.bar(self.resultados['Destino'], self.resultados['GastoTotal'], color=colores[:len(self.resultados)])
+
+        ax.legend(bars, self.resultados['Destino'], title='Destinos', title_fontsize='large')
+        ax.set_xlabel('Destinos')
+        ax.set_ylabel('Gasto Total Promedio')
+        ax.set_title('Gasto total promedio por Destino')
+        plt.show()
