@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
 from Lineas import Grafico_lineas
 from boxplot import Boxplot
 from barras import Grafico_barras
@@ -23,7 +22,8 @@ grafico_gasto_destino.configurar_tema('ggplot')
 grafico_gasto_estudio.configurar_tema('ggplot')
 
 # Graficar
-grafico_gasto_anual.graficar(color_linea='green', color_puntos='orange')
+grafico_gasto_anual.graficar(color_linea='red', color_puntos='pink')
 aerolineas.graficar()
 grafico_gasto_destino.graficar()
 grafico_gasto_estudio.graficar()
+
