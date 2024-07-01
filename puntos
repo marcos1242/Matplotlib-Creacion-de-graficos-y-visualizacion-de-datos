@@ -1,0 +1,29 @@
+from Graficos import Graficos
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+
+class Grafico_dispersion(Graficos):
+    def filtrar_datos(self):
+        datos_filtrados = self.datos.dropna(subset=['Estudio'])
+        return datos_filtrados[~datos_filtrados['Estudio'].isin(['Otros', 'Sin Datos'])]
+
+    def calcular_resultados(self):
+        return self.datos_filtrados.groupby('Estudio')['GastoTotal'].mean().reset_index()
+
+    def graficar(self, colores=None):
+        if colores is None:
+            colores = plt.get_cmap('hsv', len(self.resultados))
+
+        fig, ax = plt.subplots(figsize=(15, 12))
+
+        for i, estudio in enumerate(self.resultados['Estudio']):
+            promedio = self.resultados[self.resultados['Estudio'] == estudio]
+            ax.scatter(promedio['Estudio'], promedio['GastoTotal'], color=colores(i), label=estudio, s=100)
+
+        ax.set_xlabel('Niveles de estudio')
+        ax.set_ylabel('Gasto Total Promedio')
+        ax.legend(title='Estudios', title_fontsize='large', loc='upper left')
+        ax.set_title('Gasto Promedio por Nivel de Estudio')
+        plt.show()
