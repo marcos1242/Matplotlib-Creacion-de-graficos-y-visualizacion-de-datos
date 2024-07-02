@@ -21,6 +21,19 @@ Pandas - pip install pandas
 ```
 https://catalogodatos.gub.uy/dataset/1c1d75d0-b3c9-4ea4-a519-8c6b1468e589/resource/922f23e1-296c-490a-a3df-61e03e122d17/download/emisivo.csv
 ```
+
+####### lectura de los archivos
+
+- Graficos
+- Lineas
+- boxplot
+- barras
+- puntos
+- main.py
+
+
+
+
 ### Link de video presentacion
 
 ```
