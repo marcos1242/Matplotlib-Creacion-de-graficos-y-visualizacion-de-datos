@@ -43,5 +43,5 @@ https://youtu.be/_U4rA5DuirE?si=lXsz1z76a-Zi53Jx
 ### link ppt 
 
 ```
-https://www.canva.com/design/DAGJPTZhMSk/C72tsoDc2cUUHQrEziNNlw/view?utm_content=DAGJPTZhMSk&utm_campaign=designshare&utm_medium=link&utm_source=editor
+https://drive.google.com/file/d/1ajC3tN7kd532y1XUQOprRgolRD2OireM/view?usp=sharing
 ```
