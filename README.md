@@ -31,16 +31,12 @@ https://catalogodatos.gub.uy/dataset/1c1d75d0-b3c9-4ea4-a519-8c6b1468e589/resour
 - main.py
 
 
-
-
 ### Link de video presentacion
 
-```
 https://youtu.be/_U4rA5DuirE?si=lXsz1z76a-Zi53Jx
-```
+
 
 ### link ppt 
 
-```
 https://drive.google.com/file/d/1ajC3tN7kd532y1XUQOprRgolRD2OireM/view?usp=sharing
-```
+
